@@ -15,10 +15,10 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Database configuration
 const config = {
-    user: 'azureuser',
-    password: 'P@ssw0rdssss',
-    server: 'week9911.database.windows.net',
-    database: 'week9',
+    user: 'user',
+    password: 'P@ssw0rd',
+    server: 'wk10334.database.windows.net',
+    database: 'wk10334',
   options: {
     encrypt: true,
     enableArithAbort: true
@@ -40,8 +40,9 @@ connectToDatabase();
 // Routes
 app.get('/', async (req, res) => {
   try {
-    const result = await sql.query`SELECT * FROM Expenses`;
-    res.render('index', { expenses: result.recordset });
+    //const result = await sql.query`SELECT * FROM Expenses`;
+    //res.render('index', { expenses: result.recordset });
+    res.render('index');
   } catch (err) {
     console.error('Error retrieving expenses:', err);
     res.status(500).send('Error retrieving expenses');
