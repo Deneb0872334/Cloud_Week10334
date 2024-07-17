@@ -40,9 +40,8 @@ connectToDatabase();
 // Routes
 app.get('/', async (req, res) => {
   try {
-    //const result = await sql.query`SELECT * FROM Expenses`;
-    //res.render('index', { expenses: result.recordset });
-    res.render('index');
+    const result = await sql.query`SELECT * FROM Expenses`;
+    res.render('index', { expenses: result.recordset });
   } catch (err) {
     console.error('Error retrieving expenses:', err);
     res.status(500).send('Error retrieving expenses');
