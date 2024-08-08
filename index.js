@@ -40,7 +40,9 @@ connectToDatabase();
 // Routes
 app.get('/', async (req, res) => {
   try {
-    const result = await sql.query`SELECT * FROM Expenses`;
+    const request = new sql.Request();
+    request.queryTimeout = 30000; // 30 seconds
+    const result = await request.query('SELECT * FROM Expenses');
     res.render('index', { expenses: result.recordset });
   } catch (err) {
     console.error('Error retrieving expenses:', err);
